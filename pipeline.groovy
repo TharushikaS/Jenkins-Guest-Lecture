@@ -1,12 +1,16 @@
 pipeline {
     agent any
     stages {
-        stage('Create Directory') {
+        stage('Checkout') {
             steps {
-                script {
-                    def dirPath = "/path/to/your/directory"
-                    sh "mkdir -p ${dirPath}"
-                }
+                // Clone the GitHub repository
+                git 'https://github.com/TharushikaS/Jenkins-Guest-Lecture.git'
+            }
+        }
+        stage('Run Python Script') {
+            steps {
+                // Run the Python script
+                sh 'python3 hello_world.py'
             }
         }
     }
